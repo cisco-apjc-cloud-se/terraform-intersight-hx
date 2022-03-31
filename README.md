@@ -3,11 +3,11 @@
 ## Introduction
 This module will simplify the configuration & deployment of a HyperFlex HCI cluster through the Intersight Cloud Operating Platform.
 
-![HX Overview](./images/hx-overview.png)
+![HX Overview](https://raw.githubusercontent.com/cisco-apjc-cloud-se/terraform-intersight-hx/main/images/hx-overview.png)
 
 HyperFlex clusters are configured using a set of policies grouped together as a profile.  The profile is then assigned to a group of physical HyperFlex servers, themselves either connected and managed through a pair of Cisco UCS Fabric Interconnects (i.e. **HyperFlex Data Center** clusters) or connected directly any upstream switches (i.e. **HyperFlex Edge** clusters).  This module will support either connectivity model.
 
-![HX Config Options](./images/hx-config-options.png)
+![HX Config Options](https://raw.githubusercontent.com/cisco-apjc-cloud-se/terraform-intersight-hx/main/images/hx-config-options.png)
 
 This module will suport deploying HyperFlex clusters with either the default *VMware vSphere ESXi* operating system, or now the *[Cisco Intersight Workload Engine (IWE)](https://www.cisco.com/c/en/us/products/collateral/cloud-systems-management/intersight/at-a-glance-c45-2470301.html)* operating system for Kubernetes-based workloads. There are some configuration differences between these two operating systems.  Please see the section for each OS below.
 
@@ -59,7 +59,7 @@ These may need to be removed manually if applicable or appropriate.
 ##### 5. Tidy-up IWE Kubernetes Cluster Profile via Intersight API #####
 If for some reason, the HyperFlex cluster profile did not delete cleanly the associated bare-metal IKS cluster profile may be hidden from the GUI and left in a `DeleteFailed` state.  This may not be noticeable until attemping to create another cluster with the same name.   To ensure that no profiles are left behind it is good practice to use the Intersight API `GET /api/v1/kubernetes/ClusterProfiles` to ensure no profiles are left in a `status = "DeleteFailed"` state.   Should a profile be found, these can be deleted correctly using the `DELETE /api/v1/kubernetes/ClusterProfiles` API and the MOID of the specific failed profile.
 
-![API ClusterProfiles](./images/api-getclusters.png)
+![API ClusterProfiles](https://raw.githubusercontent.com/cisco-apjc-cloud-se/terraform-intersight-hx/main/images/api-getclusters.png)
 
 ## Common Assumptions
 * Intersight credentials have been configured as either a local tfvars file excluded from the Git repository or as a sensitive variable in the Terraform workspace (Cloud / Enterprise verions).  These credentials should never be included in any Git code repositories.
@@ -72,13 +72,13 @@ If for some reason, the HyperFlex cluster profile did not delete cleanly the ass
 
 * The Intersight Terraform provider tracks the `action` parameter as a stateful configuration parameter however Interisght will change this parameter to `No-op` after the action has been submitted.  This will mean any subsequent runs will show the `action` parameter as not matching the state and Terraform will attempt to redeploy the cluster.  This should have no impact however as Intersight will verify nothing has changed.  To avoid this as being seen as a state change in Terraform, set the `action` parameter to `No-op` after the cluster has been deployed and re-run the plan to update the status or run a "refresh" type plan.
 
-![tfcb plan no-op to deploy](./images/no-op-deploy.png)
+![tfcb plan no-op to deploy](https://raw.githubusercontent.com/cisco-apjc-cloud-se/terraform-intersight-hx/main/images/no-op-deploy.png)
 
-![tfcb plan no-op to deploy intersight view](./images/no-op-deploy2.png)
+![tfcb plan no-op to deploy intersight view](https://raw.githubusercontent.com/cisco-apjc-cloud-se/terraform-intersight-hx/main/images/no-op-deploy2.png)
 
 * `wait_for_completion = true` and `action = deploy` will cause Terraform to wait until the deployment has completed.  For HX deployments, this may take longer than the default timeout of 2 hours so this combination is not recommended.  
 
-![tfcb apply failed](./images/apply-failed.png)
+![tfcb apply failed](https://raw.githubusercontent.com/cisco-apjc-cloud-se/terraform-intersight-hx/main/images/apply-failed.png)
 
 ## VMware vSphere ESXi Operating System
 ### Assumptions
@@ -246,11 +246,11 @@ module "hx" {
 
 ### Results
 
-![vCenter](./images/new-vsphere-cluster.png)
+![vCenter](https://raw.githubusercontent.com/cisco-apjc-cloud-se/terraform-intersight-hx/main/images/new-vsphere-cluster.png)
 
-![Overview](./images/vsphere-profile-overview.png)
+![Overview](https://raw.githubusercontent.com/cisco-apjc-cloud-se/terraform-intersight-hx/main/images/vsphere-profile-overview.png)
 
-![Policies](./images/vsphere-profile-policies.png)
+![Policies](https://raw.githubusercontent.com/cisco-apjc-cloud-se/terraform-intersight-hx/main/images/vsphere-profile-policies.png)
 
 ## Cisco Intersight Workload Engine Operating System
 ### Caveats
@@ -446,11 +446,11 @@ module "hx" {
 
 ### Results
 
-![IWE HX Operate](./images/operate-hx-iwe.png)
+![IWE HX Operate](https://raw.githubusercontent.com/cisco-apjc-cloud-se/terraform-intersight-hx/main/images/operate-hx-iwe.png)
 
-![Overview](./images/iwe-profile-overview.png)
+![Overview](https://raw.githubusercontent.com/cisco-apjc-cloud-se/terraform-intersight-hx/main/images/iwe-profile-overview.png)
 
-![Policies](./images/iwe-profile-policies.png)
+![Policies](https://raw.githubusercontent.com/cisco-apjc-cloud-se/terraform-intersight-hx/main/images/iwe-profile-policies.png)
 
 ## Advanced Usage
 ### Node (Server) Configuration
