@@ -26,7 +26,7 @@ provider "intersight" {
 ### HYPERFLEX CLUSTER PROVISIONING MODULE ###
 module "hx" {
   source  = "cisco-apjc-cloud-se/hx/intersight"
-  version = "1.0.2"
+  version = "1.0.3"
 
   ### COMMON SETTINGS ###
   action              = "Deploy" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
@@ -38,7 +38,6 @@ module "hx" {
   cluster = {
     name                          = "TF-HX-VSPHERE"
     description                   = "HX Cluster deployed by Terrafrom"
-    hypervisor_control_ip_address = "172.31.255.2"
     hypervisor_type               = "ESXi" # ESXi, IWE
     mac_address_prefix            = "00:25:B5:00"
     mgmt_ip_address               = "10.67.53.226"
