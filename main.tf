@@ -254,7 +254,6 @@ module "cluster_profile" {
   name                          = var.cluster.name
   description                   = var.cluster.description
   data_ip_address               = var.cluster.data_ip_address
-  hypervisor_control_ip_address = var.cluster.hypervisor_control_ip_address
   hypervisor_type               = var.cluster.hypervisor_type # ESXi vs IWE
   mac_address_prefix            = var.cluster.mac_address_prefix
   mgmt_ip_address               = var.cluster.mgmt_ip_address
@@ -267,6 +266,7 @@ module "cluster_profile" {
   wwxn_prefix                   = var.cluster.wwxn_prefix #?
 
   ## IWE HYPERVISOR OPTIONAL ##
+  hypervisor_control_ip_address = var.cluster.hypervisor_control_ip_address
   storage_client_vlan           = var.cluster.storage_client_vlan
   cluster_internal_subnet       = var.cluster.cluster_internal_subnet
 

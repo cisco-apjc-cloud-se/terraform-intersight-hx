@@ -7,13 +7,11 @@ data "intersight_organization_organization" "this" {
 resource "intersight_hyperflex_cluster_profile" "this" {
   name                          = var.name
   description                   = var.description
-
   action                        = var.action
   wait_for_completion           = var.wait_for_completion # Bool?
-
+  
   data_ip_address               = var.data_ip_address
   host_name_prefix              = var.host_name_prefix
-  hypervisor_control_ip_address = var.hypervisor_control_ip_address
   hypervisor_type               = var.hypervisor_type
   mac_address_prefix            = var.mac_address_prefix
   mgmt_ip_address               = var.mgmt_ip_address
@@ -24,6 +22,7 @@ resource "intersight_hyperflex_cluster_profile" "this" {
   wwxn_prefix                   = var.wwxn_prefix #?
 
   ## IWE Only ##
+  hypervisor_control_ip_address = var.hypervisor_control_ip_address
   storage_client_ip_address     = var.storage_client_vlan.ip_address
   storage_client_netmask        = var.storage_client_vlan.netmask
 

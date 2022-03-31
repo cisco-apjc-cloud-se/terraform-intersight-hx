@@ -47,6 +47,7 @@ variable "data_ip_address" {
 variable "hypervisor_control_ip_address" {
   type        = string
   description = "The hypervisor control virtual IP address for the HyperFlex compute cluster that is used for node/pod management."
+  default = null
 }
 
 variable "hypervisor_type" {

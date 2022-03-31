@@ -38,7 +38,6 @@ variable "cluster" {
     name                          = string
     description                   = string
     data_ip_address               = optional(string)
-    hypervisor_control_ip_address = string
     hypervisor_type               = string ## ESXi, IWE, HyperV
     mac_address_prefix            = string
     mgmt_ip_address               = string
@@ -53,6 +52,7 @@ variable "cluster" {
     storage_type                  = optional(string)
     wwxn_prefix                   = optional(string)
     ## IWE ONLY ##
+    hypervisor_control_ip_address = optional(string)
     storage_client_vlan           = optional(object({
       name       = string
       vlan_id    = number
