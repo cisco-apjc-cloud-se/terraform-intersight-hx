@@ -9,7 +9,7 @@ resource "intersight_hyperflex_cluster_profile" "this" {
   description                   = var.description
   action                        = var.action
   wait_for_completion           = var.wait_for_completion # Bool?
-  
+
   data_ip_address               = var.data_ip_address
   host_name_prefix              = var.host_name_prefix
   hypervisor_type               = var.hypervisor_type
@@ -85,7 +85,7 @@ resource "intersight_hyperflex_cluster_profile" "this" {
   dynamic "proxy_setting" {
     for_each = var.proxy_setting_policy_moid == null ? [] : [var.proxy_setting_policy_moid]
     content {
-      moid = proxy_setting_policy_moid.value
+      moid = proxy_setting.value
     }
   }
 
