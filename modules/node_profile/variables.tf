@@ -70,4 +70,5 @@ variable "node_role" {
   type = string
   description = "The role that this node performs in the HyperFlex cluster. Unknown - The node role is not available. Storage - The node persists data and contributes to the storage capacity of a cluster. Compute - The node contributes to the compute capacity of a cluster."
   default = "Storage"
+  nullable = false
 }
