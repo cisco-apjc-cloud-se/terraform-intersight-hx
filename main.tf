@@ -321,6 +321,9 @@ module "node_profile" {
   hypervisor_data_ip      = try(each.value.hypervisor_data_ip, null)
   hypervisor_mgmt_ip      = try(each.value.hypervisor_mgmt_ip, null)
 
+  ## Node Role ##
+  node_role               = try(each.value.node_role, null)
+
 }
 
 

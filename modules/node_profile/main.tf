@@ -69,6 +69,8 @@ resource "intersight_hyperflex_node_profile" "this" {
   hypervisor_data_ip      = var.hypervisor_data_ip
   hypervisor_mgmt_ip      = var.hypervisor_mgmt_ip
 
+  node_role               = var.node_role
+
   assigned_server {
     moid = data.intersight_compute_physical_summary.this.results[0].moid
     object_type = "compute.RackUnit"
