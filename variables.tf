@@ -78,6 +78,7 @@ variable "nodes" {
     hypervisor_control_ip   = optional(string)
     hypervisor_data_ip      = optional(string)
     hypervisor_mgmt_ip      = optional(string)
+    node_role               = optional(string)
     }))
 }
 
