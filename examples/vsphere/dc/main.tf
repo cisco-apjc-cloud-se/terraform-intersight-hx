@@ -26,7 +26,7 @@ provider "intersight" {
 ### HYPERFLEX CLUSTER PROVISIONING MODULE ###
 module "hx" {
   source  = "terraform-cisco-modules/hx/intersight"
-  version = "1.0.5"
+  version = "1.0.6"
 
   ### COMMON SETTINGS ###
   action              = "Deploy" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
@@ -146,7 +146,7 @@ module "hx" {
     name                    = "tf-vsphere-sw-version"
     description             = "HX vSphere ESXi cluster software version policy created by Terraform"
     server_firmware_version = "4.2(1i)"
-    hxdp_version            = "4.5(2b)"
+    hxdp_version            = "5.0(1b)"
   }
 
 }
