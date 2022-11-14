@@ -22,9 +22,9 @@ resource "intersight_hyperflex_cluster_profile" "this" {
   wwxn_prefix                   = var.wwxn_prefix #?
 
   ## IWE Only ##
-  hypervisor_control_ip_address = var.hypervisor_control_ip_address
-  storage_client_ip_address     = var.storage_client_vlan.ip_address
-  storage_client_netmask        = var.storage_client_vlan.netmask
+  hypervisor_control_ip_address = var.hypervisor_type == "IWE" ? var.hypervisor_control_ip_address : null
+  storage_client_ip_address     = var.hypervisor_type == "IWE" ? var.storage_client_vlan.ip_address : null
+  storage_client_netmask        = var.hypervisor_type == "IWE" ? var.storage_client_vlan.netmask: null
 
 
   dynamic "auto_support" {
